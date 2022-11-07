@@ -2,6 +2,8 @@
 
 Indentation guides using the builtin `shiftwidth` and `listchars` variables.
 
+![print_07_02:48](https://user-images.githubusercontent.com/80704612/200235123-f0b1c4dc-9159-47b7-bb4a-92e1c5e658db.png)
+
 ## Installation
 
 [packer.nvim](https://github.com/wbthomason/packer.nvim):

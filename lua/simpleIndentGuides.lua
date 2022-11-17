@@ -8,7 +8,6 @@ local function SIGUpdate()
   -- get the last char
   local separator = Indicator:match(".?[\128-\191]*$")
 
-  vim.opt_local.list = true
   vim.opt_local.listchars = vim.o.listchars
   vim.opt_local.listchars:remove("leadmultispace")
   vim.opt_local.listchars:append({

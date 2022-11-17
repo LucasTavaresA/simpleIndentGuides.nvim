@@ -11,6 +11,7 @@ Indentation guides using the builtin `shiftwidth` and `listchars` variables.
 use {
   'lucastavaresa/simpleIndentGuides.nvim',
   config = function()
+    vim.opt.list = true -- enable in all buffers
     require("simpleIndentGuides").setup()
   end
 }
@@ -23,6 +24,15 @@ use {
 You can toggle the guides with the `:SIGToggle` command
 
 ## Customization
+
+To disable the guide in specific buffers
+
+```lua
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "org", "txt", "norg" },
+  command = "setlocal nolist",
+})
+```
 
 Setup can receive a string to be the indentation guide,
 the second character is used as the padding between the guides

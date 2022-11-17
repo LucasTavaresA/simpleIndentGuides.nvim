@@ -1,7 +1,8 @@
 local M = {}
 local Indicator = "│ "
 
-local function SIGEnable()
+--- Updates the guides according to shiftwidth
+local function SIGUpdate()
   local shiftwidth = vim.bo.shiftwidth - 1
   -- get the first char
   local indicator = Indicator:match("^.?[\128-\191]*")
@@ -31,14 +32,14 @@ function M.setup(indicator)
   vim.api.nvim_create_autocmd("OptionSet", {
     pattern = "shiftwidth",
     group = group,
-    callback = SIGEnable,
+    callback = SIGUpdate,
   })
 
   -- The autocmd above does not work at startup
   -- and when you change to already visible buffers
   vim.api.nvim_create_autocmd("BufWinEnter", {
     group = group,
-    callback = SIGEnable,
+    callback = SIGUpdate,
   })
 
   -- Toggle
@@ -46,7 +47,7 @@ function M.setup(indicator)
     if vim.wo.listchars:match("leadmultispace") then
       vim.opt_local.listchars:remove("leadmultispace")
     else
-      SIGEnable()
+      SIGUpdate()
     end
   end, {})
 end

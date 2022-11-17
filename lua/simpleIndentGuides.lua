@@ -1,27 +1,25 @@
 local M = {}
-local Indicator = "│ "
+---@type string
+local Guide = "│"
+---@type string
+local Padding = " "
 
 --- Updates the guides according to shiftwidth
 local function SIGUpdate()
-  -- get the first char
-  local indicator = Indicator:match("^.?[\128-\191]*")
-  -- get the last char
-  local separator = Indicator:match(".?[\128-\191]*$")
-
   vim.opt_local.listchars = vim.o.listchars
   vim.opt_local.listchars:remove("leadmultispace")
   vim.opt_local.listchars:append({
-    leadmultispace = indicator
-        .. string.rep(separator, (vim.bo.shiftwidth - 1)),
+    leadmultispace = Guide .. string.rep(Padding, (vim.bo.shiftwidth - 1)),
   })
 end
 
-function M.setup(indicator)
-  if indicator ~= nil then
-    if type(indicator) == "string" then
-      Indicator = indicator
-    else
-      error("setup should receive a string but received a " .. type(indicator))
+---@param guide string
+---@param padding string
+function M.setup(guide, padding)
+  if guide ~= nil then
+    Guide = guide
+    if padding ~= nil then
+      Padding = padding
     end
   end
 

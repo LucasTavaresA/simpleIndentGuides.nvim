@@ -34,12 +34,18 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 ```
 
-Setup can receive a string to be the indentation guide,
-the second character is used as the padding between the guides
+Setup can receive one or two characters,
+the first one is the guide,
+the second string is the padding between the guides
 
-The default indicator is `│ `
+The default guide is `│`
 
 Example:
 ```lua
-require("simpleIndentGuides").setup("┊·")
+require("simpleIndentGuides").setup("┊")
+```
+
+Another example:
+```lua
+require("simpleIndentGuides").setup("┊", "·")
 ```

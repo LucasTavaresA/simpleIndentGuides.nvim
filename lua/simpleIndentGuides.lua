@@ -3,7 +3,6 @@ local Indicator = "│ "
 
 --- Updates the guides according to shiftwidth
 local function SIGUpdate()
-  local shiftwidth = vim.bo.shiftwidth - 1
   -- get the first char
   local indicator = Indicator:match("^.?[\128-\191]*")
   -- get the last char
@@ -13,7 +12,8 @@ local function SIGUpdate()
   vim.opt_local.listchars = vim.o.listchars
   vim.opt_local.listchars:remove("leadmultispace")
   vim.opt_local.listchars:append({
-    leadmultispace = indicator .. string.rep(separator, shiftwidth),
+    leadmultispace = indicator
+        .. string.rep(separator, (vim.bo.shiftwidth - 1)),
   })
 end
 

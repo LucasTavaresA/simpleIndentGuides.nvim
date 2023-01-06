@@ -6,7 +6,10 @@ Indentation guides using the builtin `shiftwidth` and `listchars` variables.
 
 ## Installation
 
+**You have to use setup()**
+
 [packer.nvim](https://github.com/wbthomason/packer.nvim):
+
 ```lua
 use {
   'lucastavaresa/simpleIndentGuides.nvim',
@@ -16,12 +19,6 @@ use {
   end
 }
 ```
-
-## Usage
-
-**You have to use setup() to use any command**
-
-You can toggle the guides with the `:SIGToggle` command
 
 ## Customization
 
@@ -41,11 +38,13 @@ the second string is the padding between the guides
 The default guide is `│`
 
 Example:
+
 ```lua
 require("simpleIndentGuides").setup("┊")
 ```
 
 Another example:
+
 ```lua
 require("simpleIndentGuides").setup("┊", "·")
 ```

@@ -1,3 +1,4 @@
+---@type table
 local M = {}
 ---@type string
 local Guide = "│"
@@ -13,8 +14,8 @@ local function SIGUpdate()
   })
 end
 
----@param guide string
----@param padding string
+---@param guide string|nil
+---@param padding string|nil
 function M.setup(guide, padding)
   if guide ~= nil then
     Guide = guide
@@ -38,15 +39,6 @@ function M.setup(guide, padding)
     group = group,
     callback = SIGUpdate,
   })
-
-  -- Toggle
-  vim.api.nvim_create_user_command("SIGToggle", function()
-    if vim.wo.listchars:match("leadmultispace") then
-      vim.opt_local.listchars:remove("leadmultispace")
-    else
-      SIGUpdate()
-    end
-  end, {})
 end
 
 return M
